@@ -38,17 +38,14 @@ Common labels
 helm.sh/chart: {{ include "fluent-bit.chart" . }}
 {{ include "fluent-bit.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{/*
 Selector labels
 */}}
 {{- define "fluent-bit.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "fluent-bit.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+app: {{ include "fluent-bit.name" . }}
 {{- end -}}
 
 {{/*
